@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Catálogo Premium | Ferreira Studio IA</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-color: #D4AF37;
+            --transition: all 0.3s ease;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        main {
+            position: relative;
+            z-index: 10;
+            padding: 50px 0 100px 0;
+        }
+
+        /* =========================================================
+           CABEÇALHO DA MARCA
+           ========================================================= */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .brand-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            margin-bottom: 15px;
+        }
+
+        .brand-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        /* =========================================================
+           EFEITOS DE BLUR DOURADO DE FUNDO
+           ========================================================= */
+        .blur-glow {
+            position: absolute;
+            width: 50vw;
+            height: 50vw;
+            max-width: 500px;
+            max-height: 500px;
+            background: var(--primary-color);
+            filter: blur(150px);
+            opacity: 0.12;
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .blur-1 { top: 5%; left: -10%; }
+        .blur-2 { top: 30%; right: -10%; }
+        .blur-3 { top: 60%; left: -15%; }
+        .blur-4 { bottom: 5%; right: -10%; }
+
+        /* =========================================================
+           DIVISORES DE CATEGORIA MINIMALISTAS
+           ========================================================= */
+        .category-divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 80px 5% 40px 5%;
+            color: var(--primary-color);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .category-divider::before,
+        .category-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .category-divider::before { margin-right: 30px; }
+        .category-divider::after { margin-left: 30px; }
+
+        /* =========================================================
+           GRADE DE FOTOS ESTÁTICA
+           ========================================================= */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 300px);
+            gap: 30px;
+            justify-content: center;
+            padding: 0 5%;
+        }
+
+        .gallery-item {
+            width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            background: #111; 
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            z-index: 2;
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* =========================================================
+           BOTÃO FLUTUANTE WHATSAPP
+           ========================================================= */
+        .whatsapp-fab {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+            z-index: 9999 !important;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.8); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* AJUSTES RESPONSIVOS MOBILE */
+        @media (max-width: 768px) {
+            .brand-header h1 { font-size: 2rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; }
+            .gallery-item { width: 100%; height: auto; aspect-ratio: 1 / 1; }
+            .category-divider { font-size: 0.95rem; letter-spacing: 2px; margin: 50px 5% 30px 5%; }
+            .category-divider::before { margin-right: 15px; }
+            .category-divider::after { margin-left: 15px; }
+            .whatsapp-fab { bottom: 30px !important; right: 20px !important; width: 55px; height: 55px; font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blur-glow blur-1"></div>
+    <div class="blur-glow blur-2"></div>
+    <div class="blur-glow blur-3"></div>
+    <div class="blur-glow blur-4"></div>
+
+    <main>
+        
+        <div class="brand-header">
+            <img src="assets/images/logo.png" alt="Logo Ferreira Studio IA" onerror="this.style.display='none'">
+            <h1>Ferreira Studio IA</h1>
+        </div>
+
+        <div class="category-divider">Ensaio Profissional</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/images/profissional-1.png" alt="Profissional 1"></div>
+            <div class="gallery-item"><img src="assets/images/profissional-2.png" alt="Profissional 2"></div>
+            <div class="gallery-item"><img src="assets/images/profissional-3.png" alt="Profissional 3"></div>
+            <div class="gallery-item"><img src="assets/images/profissional-4.png" alt="Profissional 4"></div>
+            <div class="gallery-item"><img src="assets/images/profissional-5.png" alt="Profissional 5"></div>
+            <div class="gallery-item"><img src="assets/images/profissional-6.png" alt="Profissional 6"></div>
+        </div>
+
+        <div class="category-divider">Fotos de Aniversário</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/images/aniversario-1.png" alt="Aniversário 1"></div>
+            <div class="gallery-item"><img src="assets/images/aniversario-2.png" alt="Aniversário 2"></div>
+            <div class="gallery-item"><img src="assets/images/aniversario-3.png" alt="Aniversário 3"></div>
+            <div class="gallery-item"><img src="assets/images/aniversario-4.png" alt="Aniversário 4"></div>
+            <div class="gallery-item"><img src="assets/images/aniversario-5.png" alt="Aniversário 5"></div>
+            <div class="gallery-item"><img src="assets/images/aniversario-6.png" alt="Aniversário 6"></div>
+        </div>
+
+        <div class="category-divider">Fotos de Viagem</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/images/viagem-1.png" alt="Viagem 1"></div>
+            <div class="gallery-item"><img src="assets/images/viagem-2.png" alt="Viagem 2"></div>
+            <div class="gallery-item"><img src="assets/images/viagem-3.png" alt="Viagem 3"></div>
+            <div class="gallery-item"><img src="assets/images/viagem-4.png" alt="Viagem 4"></div>
+            <div class="gallery-item"><img src="assets/images/viagem-5.png" alt="Viagem 5"></div>
+            <div class="gallery-item"><img src="assets/images/viagem-6.png" alt="Viagem 6"></div>
+        </div>
+
+        <div class="category-divider">Restauração de Fotos Antigas</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/images/rest-1.png" alt="Restauração 1"></div>
+            <div class="gallery-item"><img src="assets/images/rest-2.png" alt="Restauração 2"></div>
+            <div class="gallery-item"><img src="assets/images/rest-3.png" alt="Restauração 3"></div>
+            <div class="gallery-item"><img src="assets/images/rest-4.png" alt="Restauração 4"></div>
+            <div class="gallery-item"><img src="assets/images/rest-5.png" alt="Restauração 5"></div>
+            <div class="gallery-item"><img src="assets/images/rest-6.png" alt="Restauração 6"></div>
+        </div>
+
+        <div class="category-divider">Fotos Premium para Perfil</div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/images/perfil-1.png" alt="Perfil 1"></div>
+            <div class="gallery-item"><img src="assets/images/perfil-2.png" alt="Perfil 2"></div>
+            <div class="gallery-item"><img src="assets/images/perfil-3.png" alt="Perfil 3"></div>
+            <div class="gallery-item"><img src="assets/images/perfil-4.png" alt="Perfil 4"></div>
+            <div class="gallery-item"><img src="assets/images/perfil-5.png" alt="Perfil 5"></div>
+            <div class="gallery-item"><img src="assets/images/perfil-6.png" alt="Perfil 6"></div>
+        </div>
+    </main>
+
+    <a href="https://wa.me/5511946278609" class="whatsapp-fab" target="_blank" title="Fale Conosco">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</body>
+</html>
